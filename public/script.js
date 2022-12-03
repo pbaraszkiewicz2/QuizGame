@@ -6,10 +6,10 @@ const answer4 = document.querySelector('#answer4');
 
 function fillQuestionsElements(data){
     question.innerText = data.question;
-    answer1.innerText = data.answers[0];
-    answer2.innerText = data.answers[1];
-    answer3.innerText = data.answers[2];
-    answer4.innerText = data.answers[3];
+    for(const i in data.answers){
+        const answerButton = document.querySelector(`#answer${Number(i)+1}`);
+        answerButton.innerText = data.answers[i];
+    };
 }
 
 function showNextQuestion(){
@@ -22,5 +22,7 @@ function showNextQuestion(){
       fillQuestionsElements(data);
     })
 }
+
+// TODO: kontynuuj od 33 minuty: https://www.udemy.com/course/kurs-nodejs-express-mongodb/learn/lecture/15088554#overview
 
 showNextQuestion();
